@@ -21,7 +21,7 @@ export async function GET(req){
 
     }
 
-    return NextResponse.json(response);
+    return NextResponse.json(gyroDataMap);
 
 }
 
