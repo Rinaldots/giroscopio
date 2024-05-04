@@ -4,11 +4,12 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-const { query } = useRouter();
 
 function page(){
 
     const [ gyroData, setGyroData] = useState({x : null, y : null, z : null});
+
+    const { query } = useRouter();
 
     useEffect(() => {
 
