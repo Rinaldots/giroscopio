@@ -16,7 +16,7 @@ function page(){
         const refreshData = setInterval(() => {
             axios.get("/api/gyroData", {
                 params : {
-                    id : query.id,
+                    id : query.pageId,
                 }
             })
             .then((response) => {
