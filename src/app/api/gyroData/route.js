@@ -10,7 +10,7 @@ export async function GET(){
     return NextResponse.json(gyroData);
 }
 
-export async function PUT(req){
+export async function POST(req){
 
     const data = await req.json();
 
