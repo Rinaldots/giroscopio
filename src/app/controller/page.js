@@ -69,6 +69,16 @@ function Page() {
 
     }, [gyroData]); // Re-run effect only when windowSize changes
 
+    const testPut = () => {
+
+        axios.put("/api/gyroData",{
+            x : 5,
+            y : 3,
+            z : 1
+        })
+
+    }
+
     return (
         <div>
 
@@ -76,6 +86,10 @@ function Page() {
             <h1>X : {gyroCleanData.x}</h1>
             <h1>Y : {gyroCleanData.y}</h1>
             <h1>Z : {gyroCleanData.z}</h1>
+
+            <button
+                onClick={() => testPut()}
+            >TESTE</button>
 
         </div>
     );

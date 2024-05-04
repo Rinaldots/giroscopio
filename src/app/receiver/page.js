@@ -13,13 +13,17 @@ function page(){
             axios.get("/api/gyroData")
             .then((response) => {
                 setGyroData(response.data);
+                console.log(response.data);
             })
             .catch((error) => {
                 console.log(error);
             });
-        }, 100);
+        }, 500);
+
+        return () => clearInterval(refreshData);
 
     },[])
+
 
     return(
         <div>
