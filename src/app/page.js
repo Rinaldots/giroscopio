@@ -38,16 +38,25 @@ function GyroscopeComponent() {
       z: event.alpha
     });
 
-    handleChange();
+    () => handleChange();
   };
 
   return (
     <div>
       <h2>Gyroscope Data:</h2>
+
       <p>X: {atData.x}</p>
       <p>Y: {atData.y}</p>
       <p>Z: {atData.z}</p>
+
+      <h1>rData</h1>
+
+      <p>X: {gyroscopeData.x}</p>
+      <p>Y: {gyroscopeData.y}</p>
+      <p>Z: {gyroscopeData.z}</p>
+
     </div>
+
   );
 }
 
