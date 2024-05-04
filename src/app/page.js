@@ -3,7 +3,10 @@
 import { useEffect, useState } from 'react';
 
 function GyroscopeComponent() {
+
   const [gyroscopeData, setGyroscopeData] = useState({ x: null, y: null, z: null });
+
+  const [ atData, setAtData] = useState({ x: 0, y: 0, z: 0 });
 
   useEffect(() => {
     if (window.DeviceOrientationEvent) {
@@ -16,20 +19,32 @@ function GyroscopeComponent() {
     }
   }, []);
 
+  const handleChange = () => {
+
+    if(gyroscopeData - atData > 5 || gyroscopeData - atData < 5){
+
+      setAtData(atData);
+
+    }
+
+  }
+
   const handleOrientation = (event) => {
     setGyroscopeData({
       x: event.beta,
       y: event.gamma,
       z: event.alpha
     });
+
+    handleChange();
   };
 
   return (
     <div>
       <h2>Gyroscope Data:</h2>
-      <p>X: {gyroscopeData.x}</p>
-      <p>Y: {gyroscopeData.y}</p>
-      <p>Z: {gyroscopeData.z}</p>
+      <p>X: {atData.x}</p>
+      <p>Y: {atData.y}</p>
+      <p>Z: {atData.z}</p>
     </div>
   );
 }
