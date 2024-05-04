@@ -19,14 +19,6 @@ function GyroscopeComponent() {
     }
   }, []);
 
-  useEffect(() => {
-
-    if(gyroscopeData.x - atData.x > 5 || gyroscopeData.x - atData.x < 5){
-      setAtData(gyroscopeData);
-    }
-
-  },[gyroscopeData])
-
   const handleOrientation = (event) => {
 
     setGyroscopeData({
