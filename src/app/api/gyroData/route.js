@@ -1,12 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 
-let gyroData = {
-    x : 0,
-    y : 0,
-    z : 0
-}
-
-let gyroDataMap = {}
+let gyroDataMap = new Map();
 
 /* 
 {
@@ -19,11 +13,11 @@ export async function GET(req){
 
     const id = req.nextUrl.searchParams.get("id");
 
-    let response = id ? id : undefined;
+    let response = "nao tem id";
 
-    if(id && gyroDataMap[id]){
+    if(id != undefined && gyroDataMap.get(id) != undefined){
 
-        response = gyroDataMap[id];
+        response = gyroDataMap.get(id);
 
     }
 
@@ -35,7 +29,7 @@ export async function POST(req){
 
     const data = await req.json();
 
-    gyroDataMap[data.id] = data.gyroData;
+    gyroDataMap.set(req.id, req.gyroData);
 
     return NextResponse.json(data);
 }
