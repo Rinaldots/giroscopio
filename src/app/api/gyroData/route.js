@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
 let gyroData = {
     x : 0,
@@ -15,11 +15,19 @@ let gyroDataMap = {}
 }
 */
 
-export async function GET(params){
+export async function GET(req){
 
-    const data = await params.json();
+    const id = req.nextUrl.searchParams.get("id");
 
-    return NextResponse.json(gyroDataMap[data.id]);
+    let response = id ? id : undefined;
+
+    if(id && gyroDataMap[id]){
+
+        response = gyroDataMap[id];
+
+    }
+
+    return NextResponse.json(response);
 
 }
 

@@ -2,21 +2,20 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
 
-function page(){
+function page({params}){
 
     const [ gyroData, setGyroData] = useState({x : null, y : null, z : null});
 
-    const { query } = useRouter();
-
     useEffect(() => {
+
+        console.log(params);
 
         const refreshData = setInterval(() => {
             axios.get("/api/gyroData", {
                 params : {
-                    id : query.pageId,
+                    id : params.pageId,
                 }
             })
             .then((response) => {
