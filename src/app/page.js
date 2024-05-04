@@ -19,18 +19,6 @@ function GyroscopeComponent() {
     }
   }, []);
 
-  const handleChange = () => {
-
-    if(gyroscopeData.x - atData.x > 5 || gyroscopeData.x - atData.x < -5){
-      setAtData(gyroscopeData);
-    }else if(gyroscopeData.y - atData.y > 5 || gyroscopeData.y - atData.y < -5){
-      setAtData(gyroscopeData);
-    }else if(gyroscopeData.z - atData.z > 5 || gyroscopeData.z - atData.z < -5){
-      setAtData(gyroscopeData);
-    }
-
-  }
-
   const handleOrientation = (event) => {
     setGyroscopeData({
       x: event.beta,
@@ -38,7 +26,26 @@ function GyroscopeComponent() {
       z: event.alpha
     });
 
-    () => handleChange();
+    if(atData.x - event.x > 5 || atData.x - event.x < -5){
+      setAtData({
+        x: event.beta,
+        y: event.gamma,
+        z: event.alpha
+      });
+    }else if(atData.y - event.y > 5 || atData.y - event.y < -5){
+      setAtData({
+        x: event.beta,
+        y: event.gamma,
+        z: event.alpha
+      });
+    }else if(atData.z - event.z > 5 || atData.z - event.z < -5){
+      setAtData({
+        x: event.beta,
+        y: event.gamma,
+        z: event.alpha
+      });
+    }
+
   };
 
   return (
