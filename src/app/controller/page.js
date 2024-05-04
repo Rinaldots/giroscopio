@@ -19,8 +19,36 @@ function Page() {
 
             setGyroData(newGyroData);
 
-            if(gyroData.x - gyroCleanData.x > 5 || gyroData.x - gyroCleanData < -5 ){
-                setGyroCleanData(newGyroData);
+            if(gyroData.x - gyroCleanData.x > 5 || gyroData.x - gyroCleanData.x < -5 ){
+
+                setGyroCleanData(
+                    {
+                        x : parseInt(newGyroData.x),
+                        y : parseInt(newGyroData.y),
+                        z : parseInt(newGyroData.z)
+                    }
+                );
+
+            }else if(gyroData.y - gyroCleanData.y > 5 || gyroData.y - gyroCleanData.y < -5 ){
+
+                setGyroCleanData(
+                    {
+                        x : parseInt(newGyroData.x),
+                        y : parseInt(newGyroData.y),
+                        z : parseInt(newGyroData.z)
+                    }
+                );
+
+            }else if(gyroData.z - gyroCleanData.z > 5 || gyroData.z - gyroCleanData.z < -5 ){
+
+                setGyroCleanData(
+                    {
+                        x : parseInt(newGyroData.x),
+                        y : parseInt(newGyroData.y),
+                        z : parseInt(newGyroData.z)
+                    }
+                );
+
             }
 
         }
