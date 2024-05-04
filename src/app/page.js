@@ -22,11 +22,11 @@ function GyroscopeComponent() {
   const handleChange = () => {
 
     if(gyroscopeData.x - atData.x > 5 || gyroscopeData.x - atData.x < -5){
-      setAtData(atData);
+      setAtData(gyroscopeData);
     }else if(gyroscopeData.y - atData.y > 5 || gyroscopeData.y - atData.y < -5){
-      setAtData(atData);
+      setAtData(gyroscopeData);
     }else if(gyroscopeData.z - atData.z > 5 || gyroscopeData.z - atData.z < -5){
-      setAtData(atData);
+      setAtData(gyroscopeData);
     }
 
   }
