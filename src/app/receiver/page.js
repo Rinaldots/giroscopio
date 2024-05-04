@@ -17,7 +17,7 @@ function page(){
             .catch((error) => {
                 console.log(error);
             });
-        })
+        }, 100);
 
     },[])
 
