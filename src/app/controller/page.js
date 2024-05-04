@@ -27,9 +27,7 @@ function Page() {
             }
 
             const handlePut = () => {
-                axios.post("/api/gyroData", {
-                    newGyroData
-                })
+                axios.post("/api/gyroData", newGyroData)
                 .then((response) => {
                     console.log(response);
                 })
