@@ -6,15 +6,28 @@ let gyroData = {
     z : 0
 }
 
-export async function GET(){
-    return NextResponse.json(gyroData);
+let gyroDataMap = {}
+
+/* 
+{
+    id : Number,
+    gyroData : dados do giroscopio    
+}
+*/
+
+export async function GET(params){
+
+    const data = await params.json();
+
+    return NextResponse.json(gyroDataMap[data.id]);
+
 }
 
 export async function POST(req){
 
     const data = await req.json();
 
-    gyroData = data;
+    gyroDataMap[data.id] = data.gyroData;
 
     return NextResponse.json(data);
 }

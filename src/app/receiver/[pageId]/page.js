@@ -2,6 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+
+const { query } = useRouter();
 
 function page(){
 
@@ -10,7 +13,11 @@ function page(){
     useEffect(() => {
 
         const refreshData = setInterval(() => {
-            axios.get("/api/gyroData")
+            axios.get("/api/gyroData", {
+                params : {
+                    id : query.id,
+                }
+            })
             .then((response) => {
                 setGyroData(response.data);
                 console.log(response.data);

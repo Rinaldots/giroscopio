@@ -2,6 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+
+const {query} = useRouter();
 
 function Page() {
 
@@ -27,7 +30,10 @@ function Page() {
             }
 
             const handlePut = () => {
-                axios.post("/api/gyroData", newGyroData)
+                axios.post("/api/gyroData", {
+                    gyroData : newGyroData,
+                    id : query.pageId
+                })
                 .then((response) => {
                     console.log(response);
                 })
@@ -67,16 +73,6 @@ function Page() {
 
     }, [gyroData]); // Re-run effect only when windowSize changes
 
-    const testPut = () => {
-
-        axios.post("/api/gyroData",{
-            x : 5,
-            y : 3,
-            z : 1
-        })
-
-    }
-
     return (
         <div>
 
@@ -84,10 +80,6 @@ function Page() {
             <h1>X : {gyroCleanData.x}</h1>
             <h1>Y : {gyroCleanData.y}</h1>
             <h1>Z : {gyroCleanData.z}</h1>
-
-            <button
-                onClick={() => testPut()}
-            >TESTE</button>
 
         </div>
     );
