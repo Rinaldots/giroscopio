@@ -26,19 +26,19 @@ function GyroscopeComponent() {
       z: event.alpha
     });
 
-    if(atData.x - event.x > 5 || atData.x - event.x < -5){
+    if(atData.x - event.beta > 5 || atData.x - event.beta < -5){
       setAtData({
         x: event.beta,
         y: event.gamma,
         z: event.alpha
       });
-    }else if(atData.y - event.y > 5 || atData.y - event.y < -5){
+    }else if(atData.y - event.gamma > 5 || atData.y - event.gamma < -5){
       setAtData({
         x: event.beta,
         y: event.gamma,
         z: event.alpha
       });
-    }else if(atData.z - event.z > 5 || atData.z - event.z < -5){
+    }else if(atData.z - event.alpha > 5 || atData.z - event.alpha < -5){
       setAtData({
         x: event.beta,
         y: event.gamma,
