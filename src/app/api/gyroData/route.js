@@ -15,9 +15,9 @@ export async function GET(req){
 
     let response = "nao tem id";
 
-    if(id != undefined && gyroDataMap.get(id) != undefined){
+    if(id != undefined && gyroDataMap.get(toString(id)) != undefined){
 
-        response = gyroDataMap.get(id);
+        response = gyroDataMap.get(toString(id));
 
     }
 
@@ -29,7 +29,7 @@ export async function POST(req){
 
     const data = await req.json();
 
-    gyroDataMap.set(req.id, req.gyroData);
+    gyroDataMap.set(toString(req.id), req.gyroData);
 
     return NextResponse.json(data);
 }
