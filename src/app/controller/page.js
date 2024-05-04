@@ -1,12 +1,30 @@
 "use client"
 
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function Page() {
 
     const [ gyroData, setGyroData] = useState({x : null, y : null, z: null});
 
     const [ gyroCleanData, setGyroCleanData] = useState({x : 0, y : 0, z: 0});
+
+    const [ subir, setSubir] = useState(null);
+
+    const handleTeste = () => {
+        axios.get("/api/teste")
+        .then((response) => {
+            setSubir(response.data.teste);
+        });
+    }
+
+    const handleSubir = () => {
+        axios.post("/api/teste")
+        .then((response) => {
+            console.log(response);
+        });
+
+    }
 
     useEffect(() => {
 
@@ -68,13 +86,25 @@ function Page() {
     return (
         <div>
             <h1>----</h1>
-            <h1>{gyroData.x}</h1>
-            <h1>{gyroData.y}</h1>
-            <h1>{gyroData.z}</h1>
+            <h1>X : {gyroData.x}</h1>
+            <h1>Y : {gyroData.y}</h1>
+            <h1>Z : {gyroData.z}</h1>
+
             <h1>---</h1>
-            <h1>{gyroCleanData.x}</h1>
-            <h1>{gyroCleanData.y}</h1>
-            <h1>{gyroCleanData.z}</h1>
+            <h1>X : {gyroCleanData.x}</h1>
+            <h1>Y : {gyroCleanData.y}</h1>
+            <h1>Z : {gyroCleanData.z}</h1>
+
+            <button
+                onClick={() => handleTeste()}
+            >TESTE</button>
+            <h1>{subir}</h1>
+
+            <button
+                onClick={() => handleSubir()}
+            >
+                subir
+            </button>
         </div>
     );
 }
