@@ -1,37 +1,44 @@
 "use client"
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
-const ScreenOrientaion = () => {
-  const [orientation, setOrientation] = useState("");
+function GyroscopeComponent() {
+  const [gyroscopeData, setGyroscopeData] = useState({ x: null, y: null, z: null });
+
   useEffect(() => {
-
-    // Function to update the orientation state
-    function updateOrientation() {
-      setOrientation(window.screen.orientation.type);
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', handleOrientation, true);
+      return () => {
+        window.removeEventListener('deviceorientation', handleOrientation, true);
+      };
+    } else {
+      console.log('Gyroscope not supported');
     }
+  }, []);
 
-    // Initial update of the orientation state
-    updateOrientation();
+  const handleOrientation = (event) => {
+    setGyroscopeData({
+      x: event.beta,
+      y: event.gamma,
+      z: event.alpha
+    });
+  };
 
-    // Add an event listener for orientation change
-    window.addEventListener("orientationchange", updateOrientation);
-
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener("orientationchange", updateOrientation);
-    };
-  }, [orientation]);
   return (
-    <>
-      {orientation === "landscape-primary" ||
-      orientation === "landscape-secondary" ? (
-        <div>"Landscape View"</div>
-      ) : (
-        <div>"Please rotate your phone to view in landscape"</div>
-      )}
-    </>
+    <div>
+      <h2>Gyroscope Data:</h2>
+      <p>X: {gyroscopeData.x}</p>
+      <p>Y: {gyroscopeData.y}</p>
+      <p>Z: {gyroscopeData.z}</p>
+    </div>
   );
-};
+}
 
-export default ScreenOrientaion;
+export default function Home() {
+  return (
+    <div>
+      <h1>Next.js Gyroscope Example</h1>
+      <GyroscopeComponent />
+    </div>
+  );
+}
