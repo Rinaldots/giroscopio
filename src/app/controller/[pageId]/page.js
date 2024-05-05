@@ -9,6 +9,23 @@ function Page({params}) {
 
     const [ gyroCleanData, setGyroCleanData] = useState({x : 0, y : 0, z: 0});
 
+    const [ joyStickContainerSize, setJoyStickContainerSize] = useState({x : 0, y : 0});
+
+    useEffect(() => {
+
+        const joyStick = document.getElementById("joyStickContainer");
+
+        setJoyStickContainerSize(
+            {
+                x : joyStick.offsetWidth,
+                y : joyStick.offsetHeight
+            }
+        )
+
+        console.log(joyStick.offsetWidth);
+
+    }, [])
+
     useEffect(() => {
 
         const handleOrientation = (event) => {
@@ -71,14 +88,29 @@ function Page({params}) {
     }, [gyroData]); // Re-run effect only when windowSize changes
 
     return (
-        <div>
+        <div className="h-screen w-full flex justify-center items-center">
 
-            <h1>---</h1>
-            <h1>X : {gyroCleanData.x}</h1>
-            <h1>Y : {gyroCleanData.y}</h1>
-            <h1>Z : {gyroCleanData.z}</h1>
+            <div className="w-full h-auto aspect-square bg-black relative">
+
+                <div 
+                    className={`w-[80%] h-auto aspect-square rounded-full absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 border border-white`}
+                    id="joyStickContainer"
+                >
+
+                    <div 
+                        className={`w-4 h-4 bg-white absolute rounded-full top-1/2 left-1/2 z-10`}
+                        style={{transform : `translateX(${(joyStickContainerSize.x / 2) * (gyroCleanData.x / 160) - 8}px)
+                        translateY(${(joyStickContainerSize.x / 2) * (gyroCleanData.y / 160) - 8}px)`}}
+                    >
+
+                    </div>
+
+                </div>
+
+            </div>
 
         </div>
+
     );
 }
 
