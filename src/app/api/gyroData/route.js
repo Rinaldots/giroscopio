@@ -13,7 +13,7 @@ export async function GET(req){
 
     const id = req.nextUrl.searchParams.get("id");
 
-    let response = "nao tem id";
+    let response = {x : 0, y : 0, z : 0};
 
     if(id != undefined && gyroDataMap[id] != undefined){
 

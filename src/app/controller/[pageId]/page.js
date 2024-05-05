@@ -2,16 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
-
-function Page() {
+function Page({params}) {
 
     const [ gyroData, setGyroData] = useState({x : null, y : null, z: null});
 
     const [ gyroCleanData, setGyroCleanData] = useState({x : 0, y : 0, z: 0});
-
-    const {query} = useRouter();
 
     useEffect(() => {
 
@@ -32,7 +28,7 @@ function Page() {
 
             const handlePut = () => {
                 axios.post("/api/gyroData", {
-                    "id" : query.pageId,
+                    "id" : params.pageId,
                     "gyroData" : newGyroData
                 })
                 .then((response) => {
