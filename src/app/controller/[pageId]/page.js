@@ -11,6 +11,8 @@ function Page({params}) {
 
     const [ joyStickContainerSize, setJoyStickContainerSize] = useState({x : 0, y : 0});
 
+    const [ windowSize, setWindowSize] = useState({x : 0, y : 0});
+
     useEffect(() => {
 
         const joyStick = document.getElementById("joyStickContainer");
@@ -22,7 +24,15 @@ function Page({params}) {
             }
         )
 
-        console.log(joyStick.offsetWidth);
+        setWindowSize(
+            {
+                x : window.innerWidth,
+                y : window.innerHeight
+            }
+        )
+
+        console.log(window.innerWidth, window.innerHeight)
+
 
     }, [])
 
@@ -88,9 +98,15 @@ function Page({params}) {
     }, [gyroData]); // Re-run effect only when windowSize changes
 
     return (
-        <div className="h-screen w-full flex justify-center items-center">
+        <div className="h-screen w-full flex justify-center items-center bg-black">
 
-            <div className="w-full h-auto aspect-square bg-black relative">
+            <div className={`${windowSize.x > windowSize.y? "w-auto h-full" : "w-full h-auto"} aspect-square bg-black relative`}>
+
+                    <div className="text-white m-4">
+                        <h1>X : {gyroCleanData.x}</h1>
+                        <h1>Y : {gyroCleanData.y}</h1>
+                        <h1>Z : {gyroCleanData.z}</h1>
+                    </div>
 
                 <div 
                     className={`w-[80%] h-auto aspect-square rounded-full absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 border border-white`}
@@ -101,9 +117,11 @@ function Page({params}) {
                         className={`w-4 h-4 bg-white absolute rounded-full top-1/2 left-1/2 z-10`}
                         style={{transform : `translateX(${(joyStickContainerSize.x / 2) * (gyroCleanData.x / 160) - 8}px)
                         translateY(${(joyStickContainerSize.y / 2) * (gyroCleanData.y / 160) - 8}px)`}}
-                    >
+                    />
 
-                    </div>
+                    <div
+                        className="w-2 h-2 bg-red-600 absolute rounded-full left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                    />
 
                 </div>
 
