@@ -114,7 +114,7 @@ function Page({params}) {
                     <div className="w-1/2 h-auto aspect-square rounded-full absolute left-1/4 top-1/4 z-10 border border-white border-dashed"/>
 
                     <div 
-                        className="w-1 h-full bg-black absolute left-1/2 -translate-x-1/2"
+                        className="w-1 h-full bg-black absolute left-1/2 -translate-x-1/2 flex flex-col justify-center items-center"
                         style={{
                             transform : `translateX(-50%) rotate(${Math.atan2((joyStickContainerSize.x / 2) * (gyroCleanData.x / 160), 
                             (joyStickContainerSize.y / 2) * (gyroCleanData.y / 160)) * 180 / Math.PI}deg)`,
