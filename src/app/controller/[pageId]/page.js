@@ -111,22 +111,25 @@ function Page({params}) {
                     id="joyStickContainer"
                 >
 
-                    <div className="w-1/2 h-auto aspect-square rounded-full absolute left-1/4 top-1/4 z-10 border border-white border-dashed"/>
+                    <div className="w-1/4 h-auto aspect-square rounded-full absolute left-1/2 top-1/2 z-10 border border-white border-dashed -translate-y-1/2 -translate-x-1/2"/>
+
+                    <div className="w-1/2 h-auto aspect-square rounded-full absolute left-1/4 top-1/4 z-10 border border-white"/>
+
+                    <div className="w-3/4 h-auto aspect-square rounded-full absolute left-1/2 top-1/2 z-10 border border-white border-dashed -translate-y-1/2 -translate-x-1/2"/>
+
+                    <div className="h-full w-[1px] bg-white absolute left-1/2 z-10 -translate-x-1/2"/>
+
+                    <div className="w-full h-[1px] bg-white absolute top-1/2 left-1/2 z-10 -translate-x-1/2"/>
 
                     <div 
-                        className="w-1 h-full bg-black absolute left-1/2 -translate-x-1/2 flex flex-col justify-center items-center"
+                        className="w-[1px] h-full bg-black absolute left-1/2 -translate-x-1/2 flex flex-col justify-center items-center"
                         style={{
                             transform : `translateX(-50%) rotate(${Math.atan2((joyStickContainerSize.x / 2) * (gyroCleanData.x / 160), 
                             (joyStickContainerSize.y / 2) * (gyroCleanData.y / 160)) * 180 / Math.PI}deg)`,
                         }}
                     >
                         <div 
-                            className={`w-full border border-white border-dashed`}
-                            style={{height : `${((joyStickContainerSize.y / 2) * -1) * (gyroCleanData.y / 160) + (joyStickContainerSize.x / 2) * (gyroCleanData.x / 160)}px`}}
-                        />
-                        <div
-                            className={`w-full border border-black border-dashed`}
-                            style={{height : `${((joyStickContainerSize.y / 2) * -1) * (gyroCleanData.y / 160) + (joyStickContainerSize.x / 2) * (gyroCleanData.x / 160)}px`}}
+                            className="w-full h-1/2 border-l-[1px] border-red-600"
                         />
                     </div>
 
