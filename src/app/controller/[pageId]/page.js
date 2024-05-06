@@ -123,7 +123,7 @@ function Page({params}) {
                     <div 
                         className={`w-4 h-4 bg-white absolute rounded-full top-1/2 left-1/2 z-10`}
                         style={{transform : `translateX(${(joyStickContainerSize.x / 2) * (gyroCleanData.x / 160) - 8}px)
-                        translateY(${-(joyStickContainerSize.y / 2) * (gyroCleanData.y / 160) + 8}px)`}}
+                        translateY(${((joyStickContainerSize.y / 2) * -1) * (gyroCleanData.y / 160) - 8}px)`}}
                     />
 
                     <div
