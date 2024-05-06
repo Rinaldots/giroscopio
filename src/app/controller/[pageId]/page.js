@@ -122,11 +122,11 @@ function Page({params}) {
                     >
                         <div 
                             className={`w-full border border-white border-dashed`}
-                            style={{height : `${((joyStickContainerSize.y / 2) * -1) * (gyroCleanData.y / 160)}px`}}
+                            style={{height : `${((joyStickContainerSize.y / 2) * -1) * (gyroCleanData.y / 160) + (joyStickContainerSize.x / 2) * (gyroCleanData.x / 160)}px`}}
                         />
                         <div
                             className={`w-full border border-black border-dashed`}
-                            style={{height : `${((joyStickContainerSize.y / 2) * -1) * (gyroCleanData.y / 160)}px`}}
+                            style={{height : `${((joyStickContainerSize.y / 2) * -1) * (gyroCleanData.y / 160) + (joyStickContainerSize.x / 2) * (gyroCleanData.x / 160)}px`}}
                         />
                     </div>
 
