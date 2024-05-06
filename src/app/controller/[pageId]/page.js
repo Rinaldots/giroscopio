@@ -31,9 +31,6 @@ function Page({params}) {
             }
         )
 
-        console.log(window.innerWidth, window.innerHeight)
-
-
     }, [])
 
     useEffect(() => {
@@ -95,6 +92,7 @@ function Page({params}) {
 
         }
 
+
     }, [gyroData]); // Re-run effect only when windowSize changes
 
     return (
@@ -112,6 +110,15 @@ function Page({params}) {
                     className={`w-[80%] h-auto aspect-square rounded-full absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 border border-white`}
                     id="joyStickContainer"
                 >
+
+                    <div className="w-1/2 h-auto aspect-square rounded-full absolute left-1/4 top-1/4 z-10 border border-white border-dashed"/>
+
+                    <div 
+                        className="w-1 h-full bg-black absolute left-1/2 -translate-x-1/2"
+                        style={{transform : `translateX(-50%) rotate(${Math.atan2((joyStickContainerSize.x / 2) * (gyroCleanData.x / 160), (joyStickContainerSize.y / 2) * (gyroCleanData.y / 160)) * 180 / Math.PI}deg)`}}
+                    >
+                        <div className="w-full h-1/2 bg-white"/>
+                    </div>
 
                     <div 
                         className={`w-4 h-4 bg-white absolute rounded-full top-1/2 left-1/2 z-10`}
