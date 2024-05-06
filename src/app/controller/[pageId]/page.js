@@ -114,10 +114,16 @@ function Page({params}) {
                     <div className="w-1/2 h-auto aspect-square rounded-full absolute left-1/4 top-1/4 z-10 border border-white border-dashed"/>
 
                     <div 
-                        className="w-1 h-full bg-black absolute left-1/2 -translate-x-1/2"
-                        style={{transform : `translateX(-50%) rotate(${Math.atan2((joyStickContainerSize.x / 2) * (gyroCleanData.x / 160), (joyStickContainerSize.y / 2) * (gyroCleanData.y / 160)) * 180 / Math.PI}deg)`}}
+                        className="w-1 h-full bg-black absolute left-1/2 -translate-x-1/2 flex items-center"
+                        style={{
+                            transform : `translateX(-50%) rotate(${Math.atan2((joyStickContainerSize.x / 2) * (gyroCleanData.x / 160), 
+                            (joyStickContainerSize.y / 2) * (gyroCleanData.y / 160)) * 180 / Math.PI}deg)`,
+                        }}
                     >
-                        <div className="w-full h-1/2 bg-white"/>
+                        <div 
+                            className={`w-full border border-white border-dashed`}
+                            style={{height : `${((joyStickContainerSize.y / 2) * -1) * (gyroCleanData.y / 160)}px`}}
+                        />
                     </div>
 
                     <div 
