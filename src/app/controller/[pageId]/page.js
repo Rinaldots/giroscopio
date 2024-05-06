@@ -38,7 +38,7 @@ function Page({params}) {
         const handleOrientation = (event) => {
             let newGyroData = {
                 x: event.gamma,
-                y: event.beta  * -1,
+                y: event.beta,
                 z: event.alpha
             }
 
