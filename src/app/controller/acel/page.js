@@ -84,10 +84,10 @@ function Page({params}) {
 
         if(window.DeviceMotionEvent){
 
-            window.addEventListener('deviceorientation', handleOrientation);
+            window.addEventListener('devicemotion', handleOrientation);
 
             return () => {
-                window.removeEventListener('deviceorientation', handleOrientation);
+                window.removeEventListener('devicemotion', handleOrientation);
             };
 
         }
