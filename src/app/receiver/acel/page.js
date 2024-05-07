@@ -12,11 +12,7 @@ function page({params}){
         console.log(params);
 
         const refreshData = setInterval(() => {
-            axios.get("/api/acelData", {
-                params : {
-                    id : params.pageId,
-                }
-            })
+            axios.get("/api/acelData")
             .then((response) => {
                 setAcelData(response.data);
                 console.log(response.data);
