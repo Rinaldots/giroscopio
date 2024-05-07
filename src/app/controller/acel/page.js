@@ -99,6 +99,10 @@ function Page({params}) {
         <div className="h-screen w-full flex justify-center items-center bg-black">
 
             <div className={`${windowSize.x > windowSize.y? "w-auto h-full" : "w-full h-auto"} aspect-square bg-black relative`}>
+        
+                <h1 className="text-white">
+                    Teste
+                </h1>
 
                     <div className="text-white m-4">
                         <h1>X : {acelCleanData.x}</h1>
