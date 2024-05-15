@@ -12,14 +12,12 @@ function page({params}){
 
         console.log(params);
 
-        const refreshIp = setInterval(() => {
-            axios.get("/api/idList").then((response) => {
-            
-                    axios.post("/api/idList", {
-                        "id" : params.pageId,
-                      })
-                })
-                }, 2000);
+        axios.get("/api/idList").then((response) => {
+        axios.post("/api/idList", {
+        "id" : params.pageId,
+        })                  
+        })
+                
 
         const refreshData = setInterval(() => {
             

@@ -1,1 +1,8 @@
-{}
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/api/idList/route": "app/api/idList/route.js",
+  "/receiver/[pageId]/page": "app/receiver/[pageId]/page.js",
+  "/api/gyroData/route": "app/api/gyroData/route.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/receiver/page": "app/receiver/page.js"
+}
