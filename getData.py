@@ -2,14 +2,14 @@ from urllib.parse import urlparse, parse_qs
 import requests, json, time, csv
 
 def getIpList():
-    url = 'http://192.168.1.100:3000/api/idList'
+    url = '/api/idList'
     respose = requests.get(url)
     ipList = json.loads(respose.content)
     return ipList
 
 def getData(id):
 
-    url = 'http://192.168.1.100:3000/api/gyroData?id='+str(id)
+    url = '/api/gyroData?id='+str(id)
     respose = requests.get(url)
     gyroData = json.loads(respose.content)
     return gyroData
