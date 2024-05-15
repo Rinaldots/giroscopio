@@ -13,6 +13,8 @@ function Page({params}) {
 
     const [ windowSize, setWindowSize] = useState({x : 0, y : 0});
 
+    const [ idList, setIdList] = useState({id : params.pageId});
+
     useEffect(() => {
 
         const joyStick = document.getElementById("joyStickContainer");
@@ -31,6 +33,7 @@ function Page({params}) {
             }
         )
 
+
     }, [])
 
     useEffect(() => {
@@ -39,7 +42,8 @@ function Page({params}) {
             let newGyroData = {
                 x: event.gamma,
                 y: event.beta * -1,
-                z: event.alpha
+                z: event.alpha,
+                id: params.pageId
             }
 
             setGyroData(newGyroData);
@@ -47,7 +51,8 @@ function Page({params}) {
             newGyroData = {
                 x : parseInt(newGyroData.x),
                 y : parseInt(newGyroData.y),
-                z : parseInt(newGyroData.z)
+                z : parseInt(newGyroData.z),
+                id: params.pageId
             }
 
             const handlePut = () => {

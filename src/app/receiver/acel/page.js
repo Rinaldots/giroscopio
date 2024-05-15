@@ -33,6 +33,7 @@ function page({params}){
             <h1>X : {acelData.x}</h1>
             <h1>Y : {acelData.y}</h1>
             <h1>Z : {acelData.z}</h1>
+            <h1>ID: {req.nextUrl.searchParams.get("id")}</h1>
         </div>
     )
 

@@ -30,7 +30,7 @@ function Page({params}) {
                 y : window.innerHeight
             }
         )
-
+        
     }, [])
 
     useEffect(() => {

@@ -2,12 +2,7 @@ import { NextResponse} from "next/server";
 
 let acelDataMap = {x : 0, y : 0, z : 0};
 
-/* 
-{
-    id : Number,
-    gyroData : dados do giroscopio    
-}
-*/
+
 
 export async function GET(){
 

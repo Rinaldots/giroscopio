@@ -2,18 +2,11 @@ import { NextResponse} from "next/server";
 
 let gyroDataMap = [];
 
-/* 
-{
-    id : Number,
-    gyroData : dados do giroscopio    
-}
-*/
-
 export async function GET(req){
 
     const id = req.nextUrl.searchParams.get("id");
 
-    let response = {x : 0, y : 0, z : 0};
+    let response = {x : 0, y : 0, z : 0, client: id};
 
     if(id != undefined && gyroDataMap[id] != undefined){
 

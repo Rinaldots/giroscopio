@@ -6,13 +6,23 @@ import axios from "axios";
 
 function page({params}){
 
-    const [ gyroData, setGyroData] = useState({x : null, y : null, z : null});
+    const [ gyroData, setGyroData] = useState({x : null, y : null, z : null, id : null});
 
     useEffect(() => {
 
         console.log(params);
 
+        const refreshIp = setInterval(() => {
+            axios.get("/api/idList").then((response) => {
+            
+                    axios.post("/api/idList", {
+                        "id" : params.pageId,
+                      })
+                })
+                }, 2000);
+
         const refreshData = setInterval(() => {
+            
             axios.get("/api/gyroData", {
                 params : {
                     id : params.pageId,
@@ -20,7 +30,7 @@ function page({params}){
             })
             .then((response) => {
                 setGyroData(response.data);
-                console.log(response.data);
+                
             })
             .catch((error) => {
                 console.log(error);
@@ -38,6 +48,7 @@ function page({params}){
             <h1>X : {gyroData.x}</h1>
             <h1>Y : {gyroData.y}</h1>
             <h1>Z : {gyroData.z}</h1>
+            <h1>ID: {gyroData.id}</h1>
         </div>
     )
 
